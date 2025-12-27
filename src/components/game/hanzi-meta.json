@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_game_hanzi_metas",
+  "info": {
+    "displayName": "Hanzi Meta"
+  },
+  "options": {},
+  "attributes": {
+    "character": {
+      "type": "string",
+      "required": true
+    },
+    "pinyin": {
+      "type": "string"
+    },
+    "stroke_data_json": {
+      "type": "json"
+    },
+    "radical": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

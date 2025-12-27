@@ -595,6 +595,52 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiLearningItemLearningItem
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'learning_items';
+  info: {
+    displayName: 'LearningItem';
+    pluralName: 'learning-items';
+    singularName: 'learning-item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<
+      ['Animals', 'Space', 'Nature', 'Daily Life', 'Colours', 'Food']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    difficulty_level: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5;
+          min: 1;
+        },
+        number
+      >;
+    fun_fact: Schema.Attribute.Text;
+    hanzi_details: Schema.Attribute.Component<'game.hanzi-meta', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::learning-item.learning-item'
+    > &
+      Schema.Attribute.Private;
+    media_assets: Schema.Attribute.Component<'game.interactive-media', false>;
+    publishedAt: Schema.Attribute.DateTime;
+    simple_description: Schema.Attribute.Text;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    unlock_points: Schema.Attribute.Integer;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
@@ -1171,6 +1217,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::global.global': ApiGlobalGlobal;
+      'api::learning-item.learning-item': ApiLearningItemLearningItem;
       'api::product.product': ApiProductProduct;
       'api::solution.solution': ApiSolutionSolution;
       'plugin::content-releases.release': PluginContentReleasesRelease;

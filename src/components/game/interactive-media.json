@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_game_interactive_medias",
+  "info": {
+    "displayName": "Interactive Media"
+  },
+  "options": {},
+  "attributes": {
+    "main_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "pronunciation_audio": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files",
+        "audios"
+      ]
+    },
+    "ambient_sound": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}
